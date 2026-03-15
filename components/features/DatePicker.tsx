@@ -1,5 +1,5 @@
 // DatePicker — champ de sélection de date via un calendrier en Popover.
-// Reçoit une valeur ISO et retourne une valeur ISO au parent via onSelect.
+// Calendrier grand format : cellules 3.5rem, typo agrandie, padding généreux.
 
 "use client";
 
@@ -42,13 +42,31 @@ export function DatePicker({ value, onSelect }: DatePickerProps) {
           </span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+
+      {/* Popover large et éléganr — pas de p-0 pour garder le fond de carte */}
+      <PopoverContent
+        className="w-auto p-0 overflow-hidden rounded-2xl border border-border shadow-2xl"
+        align="start"
+      >
         <Calendar
           mode="single"
           selected={selected}
           onSelect={handleSelect}
           locale={fr}
           initialFocus
+          // Cellules 3.5rem (56px) au lieu de 2rem — surcharge tailwind-merge
+          className="[--cell-size:3.5rem] p-6"
+          classNames={{
+            // Mois + année
+            caption_label: "select-none text-lg font-semibold text-foreground",
+            // En-tête du mois centré avec espace pour les boutons de navigation
+            month_caption: "flex h-[--cell-size] w-full items-center justify-center px-[--cell-size]",
+            // Noms des jours de la semaine — gap pour aligner avec les cellules
+            weekdays: "flex gap-3",
+            weekday: "text-muted-foreground flex-1 select-none text-sm font-medium text-center",
+            // Rangées de jours avec espacement
+            week: "mt-2 flex w-full gap-3",
+          }}
         />
       </PopoverContent>
     </Popover>
