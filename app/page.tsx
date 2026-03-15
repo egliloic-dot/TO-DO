@@ -198,11 +198,6 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold tracking-tight text-foreground">Inbox</h1>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  Appuyez sur{" "}
-                  <kbd className="rounded border border-border bg-muted px-1 py-0.5 font-mono text-[10px]">N</kbd>{" "}
-                  pour ajouter · recherche par titre, tag ou catégorie
-                </p>
               </div>
               <div className="flex items-center gap-2">
                 <DropdownMenu>
